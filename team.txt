@@ -3,3 +3,7 @@ Team Members:
     Wylee Everett
     Gabriel Wahlberg
     Joan Cerepi
+<<<<<<< HEAD
+=======
+    Steven M. Tan
+>>>>>>> main
