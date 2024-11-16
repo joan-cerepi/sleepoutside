@@ -44,7 +44,7 @@ export default class ProductDetails {
     }
 
     addProductToCart() {
-        const existingCart = getLocalStorage('so-cart') || [];
+        const existingCart = getLocalStorage('so-cart');
         existingCart.push(this.product);
         setLocalStorage('so-cart', existingCart);
     }
