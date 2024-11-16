@@ -18,10 +18,18 @@ export default class ProductList{
         this.listElement = listElement;
     }
 
+    filterProducts(list) {
+        const tentIds = ['880RR', '985RF', '985PR', '344YJ'];
+        let filterList = list.filter(product => tentIds.includes(product.Id));
+        
+        return filterList;
+    }
+
     async init() {
         const list = await this.dataSource.getData();
-        this.renderList(list);
-}
+        const newList = this.filterProducts(list);
+        this.renderList(newList);
+    }
 
     renderList(list) {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
