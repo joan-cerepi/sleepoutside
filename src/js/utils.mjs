@@ -8,12 +8,7 @@ export function qs(selector, parent = document) {
 // retrieve data from localstorage
 export function getLocalStorage(key) {
   const item = localStorage.getItem(key);
-  
-  if(item){
-    return JSON.parse(localStorage.getItem(key) || []);
-  } else {
-    return [];
-  }
+  return JSON.parse(item || '[]');
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
