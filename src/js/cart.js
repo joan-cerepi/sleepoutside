@@ -1,9 +1,9 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage } from './utils.mjs';
 
 // Function to render the cart contents on the page
 function renderCartContents() {
   // Retrieve cart items from localStorage
-  const cartItems = getLocalStorage("so-cart") || [];
+  const cartItems = getLocalStorage('so-cart') || [];
 
   // Ensure cartItems is an array
   if (!Array.isArray(cartItems)) {
@@ -12,7 +12,7 @@ function renderCartContents() {
 
   // HTML for each cart item and render it in the product list element
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.querySelector('.product-list').innerHTML = htmlItems.join('');
 }
 
 function cartItemTemplate(item) {
@@ -23,7 +23,7 @@ function cartItemTemplate(item) {
     <a href='#'>
       <h2 class='card__name'>${item.Name}</h2>
     </a>
-    <p class='cart-card__color'>${item.Colors[0]?.ColorName || "No color available"}</p>
+    <p class='cart-card__color'>${item.Colors[0]?.ColorName || 'No color available'}</p>
     <p class='cart-card__quantity'>qty: 1</p>
     <p class='cart-card__price'>$${item.FinalPrice}</p>
   </li>`;
