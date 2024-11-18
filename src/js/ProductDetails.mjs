@@ -47,5 +47,6 @@ export default class ProductDetails {
         const existingCart = getLocalStorage('so-cart');
         existingCart.push(this.product);
         setLocalStorage('so-cart', existingCart);
+        window.location.reload();
     }
 }
