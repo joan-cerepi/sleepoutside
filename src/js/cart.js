@@ -1,22 +1,28 @@
 import { getLocalStorage } from './utils.mjs';
-
 // Function to render the cart contents on the page
 function renderCartContents() {
-  // Retrieve cart items from localStorage
   const cartItems = getLocalStorage('so-cart') || [];
 
-  // Ensure cartItems is an array
   if (!Array.isArray(cartItems)) {
+    console.warn('Cart items is not an array.');
     return;
   }
 
-  // HTML for each cart item and render it in the product list element
+  const productList = document.querySelector('.product-list');
+  if (!productList) {
+    console.error('Product list element not found');
+    return;
+  }
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  productList.innerHTML = htmlItems.join('');
+
+  updateCartTotal(cartItems);
 }
 
+// Template for each cart item
 function cartItemTemplate(item) {
-  const newItem = `<li class='cart-card divider'>
+  return `<li class='cart-card divider'>
     <a href='#' class='cart-card__image'>
       <img src='${item.Image}' alt='${item.Name}' />
     </a>
@@ -24,12 +30,34 @@ function cartItemTemplate(item) {
       <h2 class='card__name'>${item.Name}</h2>
     </a>
     <p class='cart-card__color'>${item.Colors[0]?.ColorName || 'No color available'}</p>
-    <p class='cart-card__quantity'>qty: 1</p>
-    <p class='cart-card__price'>$${item.FinalPrice}</p>
+    <p class='cart-card__quantity'>qty: ${item.Quantity || 1}</p>
+    <p class='cart-card__price'>$${item.FinalPrice?.toFixed(2) || '0.00'}</p>
   </li>`;
-
-  return newItem;
 }
 
-// Initialize and render cart contents on page load
-renderCartContents();
+// Calculate total cost of cart items
+function calculateCartTotal(cartItems) {
+  return cartItems.reduce((total, item) => total + (item.FinalPrice || 0), 0);
+}
+
+// Update the cart total and visibility of cart footer
+function updateCartTotal(cartItems) {
+  const cartFooter = document.querySelector('.cart-footer');
+  const cartTotalElement = document.querySelector('.cart-total');
+
+  if (!cartFooter || !cartTotalElement) {
+    console.error('Cart footer or total element not found');
+    return;
+  }
+
+  if (cartItems.length > 0) {
+    const total = calculateCartTotal(cartItems);
+    cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
+    cartFooter.classList.remove('hide');
+  } else {
+    cartFooter.classList.add('hide');
+  }
+}
+
+// Initialize cart rendering on page load
+document.addEventListener('DOMContentLoaded', renderCartContents);
