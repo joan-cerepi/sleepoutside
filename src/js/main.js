@@ -1,7 +1,7 @@
 import ProductData from './ProductData.mjs';
 import ProductListing from './ProductList.mjs';
 import itemCounter from './cartCounter.mjs';
-import Alert from "./Alert.js"
+import Alert from './Alert.js';
 
 const alert = new Alert();
 alert.displayAlerts();
