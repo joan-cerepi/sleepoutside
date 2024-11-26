@@ -1,5 +1,4 @@
 import { getLocalStorage, setLocalStorage } from './utils.mjs';
-import itemCounter from './cartCounter.mjs';
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart') || [];
@@ -55,4 +54,3 @@ function removeFromCart(key, prodId) {
 }
 
 renderCartContents();
-itemCounter('so-cart');

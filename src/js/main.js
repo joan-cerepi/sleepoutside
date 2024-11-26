@@ -1,6 +1,5 @@
 import ProductData from './ProductData.mjs';
 import ProductListing from './ProductList.mjs';
-import itemCounter from './cartCounter.mjs';
 import Alert from './Alert.js';
 import { loadHeaderFooter } from './utils.mjs';
 
@@ -11,4 +10,3 @@ const selector = document.querySelector('.product-list');
 const productList = new ProductListing('tents', dataSource, selector);
 productList.init();
 loadHeaderFooter();
-// itemCounter('so-cart');
