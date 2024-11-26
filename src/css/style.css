@@ -169,6 +169,7 @@ button {
 .cart-card {
   display: grid;
   grid-template-columns: 25% auto 15%;
+  width: 100%;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
