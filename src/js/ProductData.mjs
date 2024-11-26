@@ -22,4 +22,21 @@ export default class ProductData {
     const data = await convertToJson(response);
     return data.Result;
   }
+
+  async searchProduct(proName, category) {
+    console.log(proName);
+    const response = await fetch(baseURL + `products/search/${category}`);
+    const data = await convertToJson(response);
+    //console.log(data)
+    const results = data.Result.filter((searchResult) => {
+      if(proName === "") {
+        return searchResult;
+      } else if (searchResult.Name.toLowerCase().includes(proName.toLowerCase()) || 
+            searchResult.FinalPrice.toString().includes(proName)) {
+        return searchResult;
+      }
+    });
+    //console.log(results);
+    return results;
+  }
 }

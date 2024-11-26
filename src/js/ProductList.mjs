@@ -29,7 +29,19 @@ export default class ProductListing {
     }
 
     renderList(productList) {
+        console.log(productList);
         renderListWithTemplate(productCardTemplate, this.listElement, productList);
     }
 
+    renderSearchList(list) {
+        console.log('renderSearchList', list);
+        renderListWithTemplate(productCardTemplate, this.listElement, list);
+      }
+    
+      async searchProd (proName) {
+        //console.log(proName);
+        const res = await this.dataSource.searchProduct(proName, this.category);
+        this.listElement.innerHTML = "";
+        this.renderSearchList(res);
+      }
 }
