@@ -1,10 +1,17 @@
-import { getLocalStorage, setLocalStorage } from './utils.mjs';
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage('so-cart') || [];
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector('.product-list').innerHTML = htmlItems.join('');
-  removeItems('so-cart');
+  const cartItems = getLocalStorage("so-cart") || [];
+  const productList = document.querySelector(".product-list");
+
+  if (cartItems.length === 0) {
+    productList.innerHTML = "<p>Your cart is empty.</p>";
+  } else {
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    productList.innerHTML = htmlItems.join("");
+    removeItems("so-cart");
+    displayTotalPrice(cartItems);
+  }
 }
 
 function cartItemTemplate(item) {
@@ -31,15 +38,16 @@ function cartItemTemplate(item) {
 }
 
 function removeItems(key) {
-  document.querySelectorAll('#removeFromCart').forEach((element) => {
-    element.addEventListener('click', function (event) {
-      if (event.target.id === 'removeFromCart') {
+  document.querySelectorAll("#removeFromCart").forEach((element) => {
+    element.addEventListener("click", function (event) {
+      if (event.target.id === "removeFromCart") {
         const prodId = event.target.dataset.id;
         removeFromCart(key, prodId);
       }
     });
   });
 }
+
 function removeFromCart(key, prodId) {
   let cartItems = getLocalStorage(key);
   const index = cartItems.findIndex((item) => item.Id === prodId);
@@ -51,6 +59,16 @@ function removeFromCart(key, prodId) {
   setLocalStorage(key, cartItems);
   // Re-render the cart contents to reflect the changes
   window.location.reload();
+}
+
+function displayTotalPrice(cartItems) {
+  const totalPrice = cartItems
+    .reduce((total, item) => total + item.FinalPrice, 0)
+    .toFixed(2);
+  const totalPriceElement = document.createElement("div");
+  totalPriceElement.className = "cart-total";
+  totalPriceElement.innerHTML = `<p>Total Price: $${totalPrice}</p>`;
+  document.querySelector("main").appendChild(totalPriceElement);
 }
 
 renderCartContents();
