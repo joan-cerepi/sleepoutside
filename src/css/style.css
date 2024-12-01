@@ -173,6 +173,7 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  transition: 0.4s ease-in-out;
 }
 
 .cart-card__image {
@@ -201,6 +202,30 @@ button {
   grid-row: 2;
   grid-column: 3;
 }
+
+.add-qty {
+  background-color: green;
+}
+
+.sub-qty {
+  background-color: red;
+}
+
+.add-qty,
+.sub-qty {
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  font-weight: 900;
+  border-radius: 6px;
+  color: #ffffff;
+  display: none;
+}
+
+.cart-card:hover .add-qty,
+.cart-card:hover .sub-qty {
+  display: inline;
+}
+
 
 @media screen and (min-width: 500px) {
   body {
