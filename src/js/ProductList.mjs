@@ -24,7 +24,7 @@ export default class ProductListing {
     }
 
     async init() {
-        const list = await this.dataSource.getData();
+        const list = await this.dataSource.getData(this.category);
         const filteredList = this.filterList(
             ['880RR', '985RF', '985PR', '344YJ'],
             list
