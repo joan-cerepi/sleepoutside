@@ -1,8 +1,9 @@
 function convertToJson(res) {
+  const newRes = res.json();
   if (res.ok) {
-    return res.json();
+    return newRes;
   } else {
-    throw new Error('Bad Response');
+    throw { name: 'servicesError', message: jsonResponse };
   }
 }
 
@@ -11,7 +12,7 @@ export default class ExternalServices {
     this.category = category;
     this.path = `../json/${this.category}.json`;
   }
-  
+
   getData() {
     return fetch(this.path)
       .then(convertToJson)
