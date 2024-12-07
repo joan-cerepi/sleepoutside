@@ -1,10 +1,40 @@
 import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
 function renderCartContents() {
-  const cartItems = getLocalStorage('so-cart') || [];
+  const cartItems = getLocalStorage('so-cart');
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  const addBtn = document.querySelectorAll('.add-qty');
+  const subBtn = document.querySelectorAll('.sub-qty');
+  if (addBtn && subBtn) {
+    addBtn.forEach(btn => btn.addEventListener('click', addQuantity));
+    subBtn.forEach(btn => btn.addEventListener('click', subtractQuantity));
+  }
   removeItems('so-cart');
+}
+
+function operation(event, op) {
+  const dataId = event.target.dataset.id;
+  const cartItems = getLocalStorage('so-cart');
+  const currentIndex = cartItems.findIndex(item => dataId === item.Id);
+
+  switch (op) {
+    case 'add':
+      cartItems[currentIndex].qty++;
+      break;
+    case 'subtract':
+      if (cartItems[currentIndex].qty > 1) cartItems[currentIndex].qty--;
+      break;
+  }
+  setLocalStorage('so-cart', cartItems);
+}
+
+function addQuantity(event) {
+  operation(event, 'add');
+}
+
+function subtractQuantity(event) {
+  operation(event, 'subtract');
 }
 
 function cartItemTemplate(item) {
@@ -20,7 +50,7 @@ function cartItemTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">qty: 1</p>
+    <p class="cart-card__quantity">qty: ${item.qty} <span class="add-qty" data-id="${item.Id}">&#43;</span> <span class="sub-qty" data-id="${item.Id}">&minus;</span></p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
     <div class="cart-card__del-btn">
     <a href="#" id="removeFromCart" data-id="${item.Id}">&#9746;</a>
@@ -49,8 +79,6 @@ function removeFromCart(key, prodId) {
   }
   // Update local storage with the new cart items
   setLocalStorage(key, cartItems);
-  // Re-render the cart contents to reflect the changes
-  window.location.reload();
 }
 
 renderCartContents();

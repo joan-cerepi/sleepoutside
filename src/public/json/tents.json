@@ -20,7 +20,8 @@
       "Name": "Marmot"
     },
     "ListPrice": 199.99,
-    "FinalPrice": 199.99
+    "FinalPrice": 199.99,
+    "qty": 1
   },
   {
     "Id": "985RF",
@@ -42,7 +43,8 @@
       "Name": "The North Face"
     },
     "ListPrice": 199.99,
-    "FinalPrice": 199.99
+    "FinalPrice": 199.99,
+    "qty": 1
   },
   {
     "Id": "989CG",
@@ -64,7 +66,8 @@
       "Name": "The North Face"
     },
     "ListPrice": 179.99,
-    "FinalPrice": 179.99
+    "FinalPrice": 179.99,
+    "qty": 1
   },
   {
     "Id": "985PR",
@@ -86,7 +89,8 @@
       "Name": "The North Face"
     },
     "ListPrice": 349.99,
-    "FinalPrice": 349.99
+    "FinalPrice": 349.99,
+    "qty": 1
   },
   {
     "Id": "880RT",
@@ -108,7 +112,8 @@
       "Name": "Marmot"
     },
     "ListPrice": 179.99,
-    "FinalPrice": 179.99
+    "FinalPrice": 179.99,
+    "qty": 1
   },
 
   {
@@ -132,6 +137,7 @@
       "Name": "Cedar Ridge"
     },
     "ListPrice": 69.99,
-    "FinalPrice": 69.99
+    "FinalPrice": 69.99,
+    "qty": 1
   }
 ]

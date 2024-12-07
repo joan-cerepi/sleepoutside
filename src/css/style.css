@@ -173,6 +173,7 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  transition: 0.4s ease-in-out;
 }
 
 .cart-card__image {
@@ -200,6 +201,58 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.add-qty {
+  background-color: green;
+}
+
+.sub-qty {
+  background-color: red;
+}
+
+.add-qty,
+.sub-qty {
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  font-weight: 900;
+  border-radius: 6px;
+  color: #ffffff;
+  display: none;
+}
+
+.cart-card:hover .add-qty,
+.cart-card:hover .sub-qty {
+  display: inline;
+}
+
+
+/** Sorting Button **/
+.sort-options {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sort-options label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.sort-options select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.sort-options select:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
 @media screen and (min-width: 500px) {
