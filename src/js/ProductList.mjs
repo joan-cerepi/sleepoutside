@@ -35,7 +35,7 @@ export default class ProductListing {
       renderListWithTemplate(productCardTemplate, this.listElement, sortedList);
     }
 
-    renderSearchList(list) {
+    renderSearchList(productList) {
       this.listElement.innerHTML = "";
       const sortedList = this.sortList(productList);
       renderListWithTemplate(productCardTemplate, this.listElement, sortedList);
