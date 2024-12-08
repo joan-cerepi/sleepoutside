@@ -231,3 +231,58 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* Newsletter Box Styles */
+.newsletter-box {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #cec6c6;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.newsletter-box p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.newsletter-box form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newsletter-box input[type="email"] {
+  width: 90%;
+  max-width: 300px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.newsletter-box button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #0fa9d8;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-box button:hover {
+  background-color: #0056b3;
+}
