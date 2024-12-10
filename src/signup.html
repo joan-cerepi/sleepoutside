@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sign Up</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<body class="signup-page">
+<h1>Create an Account</h1>
+<form id="signupForm" action="/users" method="POST" enctype="multipart/form-data">
+  <label for="firstName">First Name:</label>
+  <input id="firstName" name="firstName" type="text" required><br><br>
+
+  <label for="lastName">Last Name:</label>
+  <input id="lastName" name="lastName" type="text" required><br><br>
+
+  <label for="street">Street Address:</label>
+  <input id="street" name="street" type="text" required><br><br>
+  
+  <label for="city">City:</label>
+  <input id="city" name="city" type="text" required><br><br>
+
+  <label for="state">State:</label>
+  <input id="state" name="state" type="text" required><br><br>
+
+  <label for="zip">Zip Code:</label>
+  <input id="zip" name="zip" type="text" required><br><br>
+  
+  <label for="country">Country:</label>
+  <input id="country" name="country" type="text" required><br><br>
+
+  <label for="email">Email:</label>
+  <input id="email" name="email" type="email" required><br><br>
+
+  <label for="password">Password:</label>
+  <input id="password" name="password" type="password" required><br><br>
+
+  <label for="avatar">Avatar (optional):</label>
+  <input id="avatar" name="avatar" type="file" accept="image/*"><br><br>
+  
+  <button type="submit">Sign Up</button>
+</form>
+
+</body>
+</html>

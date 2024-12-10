@@ -286,3 +286,56 @@ footer {
 .newsletter-box button:hover {
   background-color: #0056b3;
 }
+/*Sign Up page*/
+
+.signup-page {
+  background: #dce3e6; 
+}
+
+.signup-page h1 {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 2em;
+  font-weight: normal;
+}
+
+.signup-page form {
+  background: #fff;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.signup-page form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.signup-page form input[type="text"],
+.signup-page form input[type="email"],
+.signup-page form input[type="password"],
+.signup-page form input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-page form button {
+  width: 100%;
+  padding: 10px;
+  background: #5c9fd9;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.signup-page form button:hover {
+  background: #4a8cbf;
+}
