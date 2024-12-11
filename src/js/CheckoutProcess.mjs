@@ -88,10 +88,17 @@ export default class CheckoutProcess {
         json.items = packageItems(this.list);
         console.log(json);
         try {
-          const res = await services.checkout(json);
-          console.log(res);
-        } catch (err) {
-          console.log(err);
+            const res = await services.checkout(json);
+            console.log(res);
+            setLocalStorage("so-cart", []);
+            location.assign("/checkout/success.html");
+          } catch (err) {
+            removeAllAlerts();
+            for (let message in err.message) {
+              alertMessage(err.message[message]);
+            }
+      
+            console.log(err);
         }
       }
   }
